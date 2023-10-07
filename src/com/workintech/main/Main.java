@@ -17,8 +17,7 @@ public class Main {
         List<Books> sciFicList = new ArrayList<>();
         List<Books> actionList = new ArrayList<>();
         List<Books> adventureList = new ArrayList<>();
-        Librarian lib = new Librarian(new Books(12,"Dönüşüm","Franz Kafka", Categories.ACTION));
-
+        Books books = new Books(12, "Dönüşüm", "Franz Kafka", Categories.SCIENCE_FICTION);
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
