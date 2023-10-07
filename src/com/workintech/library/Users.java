@@ -12,6 +12,11 @@ public class Users extends Person implements Actionable{
     }
 
     @Override
+    public void removeUserList() {
+
+    }
+
+    @Override
     public void removeBookList() {
 
     }

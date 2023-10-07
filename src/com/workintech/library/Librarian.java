@@ -3,7 +3,6 @@ package com.workintech.library;
 public class Librarian extends Person implements Actionable {
 
 
-
     @Override
     public void addBookList() {
 
@@ -11,7 +10,12 @@ public class Librarian extends Person implements Actionable {
 
     @Override
     public void addUserList() {
-// Burası boş kalacak
+     // Burası boş kalacak
+    }
+
+    @Override
+    public void removeUserList() {
+        // Burası boş kalacak
     }
 
     @Override
