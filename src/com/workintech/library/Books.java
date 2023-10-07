@@ -2,18 +2,17 @@ package com.workintech.library;
 
 import java.util.Objects;
 
-public class Books implements Readable {
-
+public class Books {
     private int id;
     private String name;
-    private double price;
-    private Category category;
+    private String author;
+    private Categories categories;
 
-    public Books(int id, String name, Category category) {
+    public Books(int id, String name, String author, Categories categories) {
         this.id = id;
         this.name = name;
-        this.category = category;
-        this.price = 20;
+        this.author = author;
+        this.categories = categories;
     }
 
     public int getId() {
@@ -24,12 +23,12 @@ public class Books implements Readable {
         return name;
     }
 
-    public double getPrice() {
-        return price;
+    public String getAuthor() {
+        return author;
     }
 
-    public Category getCategory() {
-        return category;
+    public Categories getCategories() {
+        return categories;
     }
 
     @Override
@@ -47,12 +46,11 @@ public class Books implements Readable {
 
     @Override
     public String toString() {
-        return "Library{" +
+        return "Books{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", price=" + price +
-                ", category=" + category +
+                ", author='" + author + '\'' +
+                ", categories=" + categories +
                 '}';
     }
-
 }
