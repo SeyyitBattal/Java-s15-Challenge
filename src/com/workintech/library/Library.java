@@ -1,4 +1,7 @@
 package com.workintech.library;
 
-public class Library {
+import java.util.Objects;
+
+public abstract class Library {
+
 }

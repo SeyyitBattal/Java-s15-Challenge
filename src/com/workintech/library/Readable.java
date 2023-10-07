@@ -1,2 +1,5 @@
-package com.workintech.library;public interface Readable {
+package com.workintech.library;
+
+public interface Readable {
+
 }
