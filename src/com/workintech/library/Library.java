@@ -3,11 +3,11 @@ package com.workintech.library;
 import com.workintech.enums.Categories;
 import com.workintech.interfaces.Actionable;
 
-public class Person implements Actionable {
+public class Library implements Actionable {
 
     @Override
     public void addBookList(Books book) {
-        allBooks.add(book);
+        allBooks.put(book.getId(), book);
         if (book.getCategories().equals(Categories.SCIENCE_FICTION)) {
             scienceCategory.add(book);
         } else if (book.getCategories().equals(Categories.ACTION)) {
@@ -19,7 +19,7 @@ public class Person implements Actionable {
 
     @Override
     public void removeBookList(Books book) {
-        allBooks.remove(book);
+        allBooks.remove(book.getId(), book);
         if (book.getCategories().equals(Categories.SCIENCE_FICTION)) {
             scienceCategory.remove(book);
         } else if (book.getCategories().equals(Categories.ACTION)) {
@@ -31,20 +31,24 @@ public class Person implements Actionable {
 
     @Override
     public void addUserList(Books book) {
-        allBooks.remove(book);
-        usersBooks.add(book);
-        if (book.getCategories().equals(Categories.SCIENCE_FICTION)) {
-            scienceCategory.remove(book);
-        } else if (book.getCategories().equals(Categories.ACTION)) {
-            actionCategory.remove(book);
+        if (usersBooks.size() >= 5) {
+            System.out.println("5 ten fazla kitap alamazsınız.");
         } else {
-            adventureCategory.remove(book);
+            allBooks.remove(book.getId(), book);
+            usersBooks.add(book);
+            if (book.getCategories().equals(Categories.SCIENCE_FICTION)) {
+                scienceCategory.remove(book);
+            } else if (book.getCategories().equals(Categories.ACTION)) {
+                actionCategory.remove(book);
+            } else {
+                adventureCategory.remove(book);
+            }
         }
     }
 
     @Override
     public void removeUserList(Books book) {
-        allBooks.add(book);
+        allBooks.put(book.getId(), book);
         usersBooks.remove(book);
         if (book.getCategories().equals(Categories.SCIENCE_FICTION)) {
             scienceCategory.add(book);

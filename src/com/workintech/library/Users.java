@@ -1,6 +1,6 @@
 package com.workintech.library;
 
-public class Users extends Person{
+public class Users extends Library{
 
 
     @Override

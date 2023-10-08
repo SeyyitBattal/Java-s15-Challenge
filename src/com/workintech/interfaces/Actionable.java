@@ -6,14 +6,17 @@ import java.util.*;
 
 public interface Actionable {
     void addBookList(Books book);
+
     void removeBookList(Books book);
+
     void addUserList(Books book);
+
     void removeUserList(Books book);
 
     List<Books> scienceCategory = new LinkedList<>();
     List<Books> actionCategory = new LinkedList<>();
     List<Books> adventureCategory = new LinkedList<>();
-    List<Books> allBooks = new LinkedList<>();
+    Map<Integer, Books> allBooks = new HashMap<>();
     List<Books> usersBooks = new LinkedList<>();
 
 }
