@@ -1,4 +1,4 @@
-package com.workintech.library;
+package com.workintech.enums;
 
 public enum Categories {
     SCIENCE_FICTION,

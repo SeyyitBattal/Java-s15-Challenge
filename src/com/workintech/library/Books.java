@@ -1,5 +1,7 @@
 package com.workintech.library;
 
+import com.workintech.enums.Categories;
+
 import java.util.Objects;
 
 public class Books {

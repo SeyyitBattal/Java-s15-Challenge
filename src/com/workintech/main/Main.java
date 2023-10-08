@@ -1,8 +1,7 @@
 package com.workintech.main;
 
+import com.workintech.enums.Categories;
 import com.workintech.library.*;
-
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,16 +15,26 @@ public class Main {
         Books book4 = new Books(201, "Yarın yokum", "Lee Child", Categories.ACTION);
         Books book5 = new Books(23, "Suç ve ceza", "Dostoyevski", Categories.SCIENCE_FICTION);
 
-        Users user = new Users();
-        user.addBookList(book1);
-        user.addBookList(book1);
-        user.addBookList(book2);
-        user.addBookList(book3);
+        Librarian librarian = new Librarian();
+        librarian.addBookList(book1);
+        librarian.addBookList(book2);
+        librarian.addBookList(book3);
+        librarian.addBookList(book4);
+        System.out.println("Librarian: " + librarian);
 
-        System.out.println(Users.scienceCategory);
         System.out.println("**************************");
-        System.out.println(Users.adventureCategory);
+        Users burak = new Users();
+        burak.addUserList(book1);
+        burak.addUserList(book3);
+        System.out.println("Burak: " + burak);
 
+
+        System.out.println("**************************");
+        System.out.println("Science Books: \n" + Users.scienceCategory);
+        System.out.println("**************************");
+        System.out.println("Adventure Books: \n" + Users.adventureCategory);
+        System.out.println("**************************");
+        System.out.println("Action Books: \n" + Users.actionCategory);
 
     }
 
