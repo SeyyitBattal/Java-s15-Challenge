@@ -1,37 +1,30 @@
 package com.workintech.main;
 
-import com.workintech.library.Books;
-import com.workintech.library.Categories;
-import com.workintech.library.Librarian;
+import com.workintech.library.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        libraryOrganisation();
+        Library();
     }
 
-    public static void libraryOrganisation() {
-        List<Books> sciFicList = new ArrayList<>();
-        List<Books> actionList = new ArrayList<>();
-        List<Books> adventureList = new ArrayList<>();
-        Books books = new Books(12, "Dönüşüm", "Franz Kafka", Categories.SCIENCE_FICTION);
+    public static void Library() {
+        Books book1 = new Books(12, "Dönüşüm", "Franz Kafka", Categories.SCIENCE_FICTION);
+        Books book2 = new Books(13, "Babamı Beklerken", "Clare Vanderpool", Categories.ADVENTURE);
+        Books book3 = new Books(76, "Dünyanın ilk günü", "Beyazit Akman", Categories.ADVENTURE);
+        Books book4 = new Books(201, "Yarın yokum", "Lee Child", Categories.ACTION);
+        Books book5 = new Books(23, "Suç ve ceza", "Dostoyevski", Categories.SCIENCE_FICTION);
 
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            try {
-                System.out.println("Kütüphaneci iseniz: L // Kullanıcı iseniz: U // Çıkmak için: E");
-                String process = scanner.next();
-                String kullanici = process.toLowerCase();
+        Users user = new Users();
+        user.addBookList(book1);
+        user.addBookList(book1);
+        user.addBookList(book2);
+        user.addBookList(book3);
 
-            } catch (Exception ex) {
-                System.out.println("Invalid process: " + ex.getMessage());
-                break;
-            }
-
-        }
+        System.out.println(Users.scienceCategory);
+        System.out.println("**************************");
+        System.out.println(Users.adventureCategory);
 
 
     }

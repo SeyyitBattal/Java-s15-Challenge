@@ -1,23 +1,5 @@
 package com.workintech.library;
 
-public class Users extends Person implements Actionable{
-    @Override
-    public void addBookList() {
+public class Users extends Person{
 
-    }
-
-    @Override
-    public void addUserList() {
-
-    }
-
-    @Override
-    public void removeUserList() {
-
-    }
-
-    @Override
-    public void removeBookList() {
-
-    }
 }
