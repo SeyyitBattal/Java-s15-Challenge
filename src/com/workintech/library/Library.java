@@ -32,7 +32,7 @@ public class Library implements Actionable {
     @Override
     public void addUserList(Books book) {
         if (usersBooks.size() >= 5) {
-            System.out.println("5 ten fazla kitap alamazsınız.");
+            System.out.println("You can take max 5 books.");
         } else {
             allBooks.remove(book.getId(), book);
             usersBooks.add(book);
@@ -61,6 +61,6 @@ public class Library implements Actionable {
 
     @Override
     public String toString() {
-        return "Tüm kitaplar: " + allBooks;
+        return "All books: " + allBooks;
     }
 }
