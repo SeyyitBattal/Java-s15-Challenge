@@ -14,6 +14,7 @@ public class Main {
     }
 
     public static void LibraryOrganisation() {
+        boolean bookInUser = false;
         Books book1 = new Books(1, "Dönüşüm", "Franz Kafka", Categories.SCIENCE_FICTION);
         Books book2 = new Books(2, "Babamı Beklerken", "Clare Vanderpool", Categories.ADVENTURE);
         Books book3 = new Books(3, "Dünyanın ilk günü", "Beyazit Akman", Categories.ADVENTURE);
@@ -39,40 +40,44 @@ public class Main {
         library.addLibraryList(books10);
         library.addLibraryList(book11);
         library.listAllBooks();
-        System.out.println("*************************");
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome! \n" +
                 "If you Librarian push \"L\" " +
                 "If you User push \"U\" " +
                 "for exit \"E\" ");
+
         while (true) {
             try {
                 String process = scanner.next().toLowerCase();
                 switch (process) {
+
                     case "e":
                         System.exit(0);
                         break;
+
                     case "u":
                         System.out.println("USER");
                         System.out.println("Please enter book name: ");
                         String userInput = scanner.next().toLowerCase();
-
                         Users user = new Users();
                         for (Books book : library.getAllBooks()) {
                             if (userInput.equals(book.getName().toLowerCase())) {
                                 System.out.println(book.getName() + "=> This book added to your list.");
                                 user.addUserList(book);
+                                System.out.println(user);
+                                bookInUser = true;
                                 break;
                             }
                         }
-
+                        if (!bookInUser) System.out.println(userInput + " isn't in our library.");
                         break;
 
                     case "l":
                         System.out.println("LIBRARIAN");
                         System.out.println("Add book: \"A\" delete book: \"D\"");
                         String librarian = scanner.next().toLowerCase();
+
                         switch (librarian) {
                             case "a":
                                 System.out.println("Enter book ID: ");
@@ -89,11 +94,11 @@ public class Main {
                                         " / Book author: " + bookAuthor +
                                         " / Book category: " + bookCategory);
                                 break;
+
                             case "d":
                                 System.out.println("You pushed d");
                                 break;
                         }
-
                     default:
                         break;
                 }
