@@ -9,13 +9,13 @@ import java.util.List;
 public class Library implements AdminDoable {
 
     @Override
-    public void addBookList(Books book) {
+    public void addLibraryList(Books book) {
         allBooks.put(book.getId(), book);
         distributeCategory(book);
     }
 
     @Override
-    public void removeBookList(Books book) {
+    public void removeLibraryList(Books book) {
         allBooks.remove(book.getId(), book);
         deletedInCategory(book);
     }

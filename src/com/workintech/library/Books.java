@@ -54,12 +54,10 @@ public class Books implements Comparable<Books> {
 
     @Override
     public String toString() {
-        return "Books{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", author='" + author + '\'' +
-                ", categories=" + categories +
-                '}';
+        return "{ ID Number: " + id +
+                ", Name: " + name +
+                ", Author: " + author +
+                ", Category: " + categories + "} ";
     }
 
 }
