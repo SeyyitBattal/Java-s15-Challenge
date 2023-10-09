@@ -9,6 +9,8 @@ import java.util.List;
 
 public class Library implements Actionable {
 
+    //TODO: if leri burada kategoriye eklendi ve kategoriye silindi adındaki 2 metota taşınacak
+
     @Override
     public void addBookList(Books book) {
         allBooks.put(book.getId(), book);
