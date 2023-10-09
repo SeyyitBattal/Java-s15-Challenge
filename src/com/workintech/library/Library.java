@@ -59,6 +59,19 @@ public class Library implements Actionable {
         }
     }
 
+    public void listAllBooks() {
+        System.out.println("____________________________");
+        for (Books book : allBooks.values()) {
+            System.out.println("____________________________");
+            System.out.println("ID Number: " + book.getId());
+            System.out.println("Name: " + book.getName());
+            System.out.println("Author: " + book.getAuthor());
+            System.out.println("Category: " + book.getCategories());
+            System.out.println("____________________________");
+        }
+        System.out.println("____________________________");
+    }
+
     @Override
     public String toString() {
         return "All books: " + allBooks;

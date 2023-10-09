@@ -4,6 +4,7 @@ import com.workintech.enums.Categories;
 import com.workintech.library.*;
 
 import java.util.Iterator;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,7 +32,7 @@ public class Main {
         library.addBookList(book7);
         library.addBookList(book8);
         library.addBookList(book9);
-        System.out.println("Library: " + library);
+        library.listAllBooks();
         System.out.println("*************************");
 
         Users Battal = new Users();
