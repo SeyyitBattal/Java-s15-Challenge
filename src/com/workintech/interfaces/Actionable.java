@@ -1,18 +1,29 @@
 package com.workintech.interfaces;
 
+import com.workintech.enums.Categories;
 import com.workintech.library.Books;
 
 import java.util.*;
 
 public interface Actionable {
-    //TODO: Booklist ve Userlist farklı interfacelerde olmalı
-     void addBookList(Books book);
-
-    void removeBookList(Books book);
-
-    void addUserList(Books book);
-
-    void removeUserList(Books book);
+    default void distributeCategory(Books book) {
+        if (book.getCategories().equals(Categories.SCIENCE_FICTION)) {
+            scienceCategory.add(book);
+        } else if (book.getCategories().equals(Categories.ACTION)) {
+            actionCategory.add(book);
+        } else {
+            adventureCategory.add(book);
+        }
+    }
+    default void deletedInCategory(Books book) {
+        if (book.getCategories().equals(Categories.SCIENCE_FICTION)) {
+            scienceCategory.remove(book);
+        } else if (book.getCategories().equals(Categories.ACTION)) {
+            actionCategory.remove(book);
+        } else {
+            adventureCategory.remove(book);
+        }
+    }
 
     List<Books> scienceCategory = new LinkedList<>();
     List<Books> actionCategory = new LinkedList<>();

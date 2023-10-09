@@ -1,33 +1,12 @@
 package com.workintech.library;
 
-import com.workintech.enums.Categories;
-import com.workintech.interfaces.Actionable;
+import com.workintech.interfaces.AdminDoable;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Library implements Actionable {
-
-    public void distributeCategory(Books book) {
-        if (book.getCategories().equals(Categories.SCIENCE_FICTION)) {
-            scienceCategory.add(book);
-        } else if (book.getCategories().equals(Categories.ACTION)) {
-            actionCategory.add(book);
-        } else {
-            adventureCategory.add(book);
-        }
-    }
-
-    public void deletedInCategory(Books book) {
-        if (book.getCategories().equals(Categories.SCIENCE_FICTION)) {
-            scienceCategory.remove(book);
-        } else if (book.getCategories().equals(Categories.ACTION)) {
-            actionCategory.remove(book);
-        } else {
-            adventureCategory.remove(book);
-        }
-    }
+public class Library implements AdminDoable {
 
     @Override
     public void addBookList(Books book) {
@@ -41,28 +20,6 @@ public class Library implements Actionable {
         deletedInCategory(book);
     }
 
-    @Override
-    public void addUserList(Books book) {
-        if (usersBooks.size() >= 5) {
-            System.out.println("You can take max 5 books.");
-        } else {
-            if (usersBooks.contains(book)) {
-                System.out.println(book.getName() + " => this book in your list");
-            } else {
-                allBooks.remove(book.getId(), book);
-                usersBooks.add(book);
-                deletedInCategory(book);
-            }
-
-        }
-    }
-
-    @Override
-    public void removeUserList(Books book) {
-        allBooks.put(book.getId(), book);
-        usersBooks.remove(book);
-        distributeCategory(book);
-    }
 
     public void listAllBooks() {
         List<Books> sortedBooks = new ArrayList<>(allBooks.values());
@@ -78,7 +35,6 @@ public class Library implements Actionable {
         }
         System.out.println("____________________________");
     }
-
 
     @Override
     public String toString() {
