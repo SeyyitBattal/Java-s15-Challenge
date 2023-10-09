@@ -2,7 +2,6 @@ package com.workintech.library;
 
 import com.workintech.enums.Categories;
 import com.workintech.interfaces.Actionable;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -46,6 +45,7 @@ public class Library implements Actionable {
         if (usersBooks.size() >= 5) {
             System.out.println("You can take max 5 books.");
         } else {
+            //TODO Ayni kitap tekrar eklenememeli
             allBooks.remove(book.getId(), book);
             usersBooks.add(book);
             deletedInCategory(book);
