@@ -36,6 +36,10 @@ public class Library implements AdminDoable {
         System.out.println("____________________________");
     }
 
+    public List<Books> getAllBooks() {
+        return new ArrayList<>(allBooks.values());
+    }
+
     @Override
     public String toString() {
         return "All books: " + allBooks;

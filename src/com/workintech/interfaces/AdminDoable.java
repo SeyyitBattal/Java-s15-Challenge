@@ -7,6 +7,4 @@ public interface AdminDoable extends Actionable {
 
     void removeLibraryList(Books book);
 
-
-
 }

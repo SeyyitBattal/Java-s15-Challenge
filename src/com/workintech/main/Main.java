@@ -55,7 +55,20 @@ public class Main {
                         break;
                     case "u":
                         System.out.println("USER");
+                        System.out.println("Please enter book name: ");
+                        String userInput = scanner.next().toLowerCase();
+
+                        Users user = new Users();
+                        for (Books book : library.getAllBooks()) {
+                            if (userInput.equals(book.getName().toLowerCase())) {
+                                System.out.println(book.getName() + "=> This book added to your list.");
+                                user.addUserList(book);
+                                break;
+                            }
+                        }
+
                         break;
+
                     case "l":
                         System.out.println("LIBRARIAN");
                         System.out.println("Add book: \"A\" delete book: \"D\"");

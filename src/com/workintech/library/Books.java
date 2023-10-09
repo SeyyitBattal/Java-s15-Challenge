@@ -33,6 +33,22 @@ public class Books implements Comparable<Books> {
         return categories;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setCategories(Categories categories) {
+        this.categories = categories;
+    }
+
     @Override
     public int compareTo(Books otherBook) {
         return this.getName().compareTo(otherBook.getName());
