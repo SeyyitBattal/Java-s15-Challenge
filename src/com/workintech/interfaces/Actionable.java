@@ -5,6 +5,7 @@ import com.workintech.library.Books;
 import java.util.*;
 
 public interface Actionable {
+    //TODO: Booklist ve Userlist farklı interfacelerde olmalı
      void addBookList(Books book);
 
     void removeBookList(Books book);
