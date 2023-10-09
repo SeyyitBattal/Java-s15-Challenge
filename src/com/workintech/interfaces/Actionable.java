@@ -16,7 +16,7 @@ public interface Actionable {
     List<Books> scienceCategory = new LinkedList<>();
     List<Books> actionCategory = new LinkedList<>();
     List<Books> adventureCategory = new LinkedList<>();
-    Map<Integer, Books> allBooks = new HashMap<>();
+    Map<Integer, Books> allBooks = new TreeMap<>();
     List<Books> usersBooks = new LinkedList<>();
 
 }

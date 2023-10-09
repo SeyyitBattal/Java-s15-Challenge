@@ -3,6 +3,10 @@ package com.workintech.library;
 import com.workintech.enums.Categories;
 import com.workintech.interfaces.Actionable;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 public class Library implements Actionable {
 
     @Override
@@ -60,8 +64,10 @@ public class Library implements Actionable {
     }
 
     public void listAllBooks() {
+        List<Books> sortedBooks = new ArrayList<>(allBooks.values());
+        sortedBooks.sort(Comparator.comparing(Books::getName));
         System.out.println("____________________________");
-        for (Books book : allBooks.values()) {
+        for (Books book : sortedBooks) {
             System.out.println("____________________________");
             System.out.println("ID Number: " + book.getId());
             System.out.println("Name: " + book.getName());
@@ -72,8 +78,11 @@ public class Library implements Actionable {
         System.out.println("____________________________");
     }
 
+
     @Override
     public String toString() {
         return "All books: " + allBooks;
     }
+
+
 }

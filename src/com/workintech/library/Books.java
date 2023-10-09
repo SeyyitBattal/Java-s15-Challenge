@@ -4,7 +4,7 @@ import com.workintech.enums.Categories;
 
 import java.util.Objects;
 
-public class Books {
+public class Books implements Comparable<Books> {
     private int id;
     private String name;
     private String author;
@@ -34,6 +34,11 @@ public class Books {
     }
 
     @Override
+    public int compareTo(Books otherBook) {
+        return this.getName().compareTo(otherBook.getName());
+    }
+
+    @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
@@ -46,6 +51,7 @@ public class Books {
         return Objects.hash(id, name);
     }
 
+
     @Override
     public String toString() {
         return "Books{" +
@@ -55,4 +61,5 @@ public class Books {
                 ", categories=" + categories +
                 '}';
     }
+
 }
