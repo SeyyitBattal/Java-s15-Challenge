@@ -9,11 +9,7 @@ import java.util.List;
 
 public class Library implements Actionable {
 
-    //TODO: if leri burada kategoriye eklendi ve kategoriye silindi adındaki 2 metota taşınacak
-
-    @Override
-    public void addBookList(Books book) {
-        allBooks.put(book.getId(), book);
+    public void distributeCategory(Books book) {
         if (book.getCategories().equals(Categories.SCIENCE_FICTION)) {
             scienceCategory.add(book);
         } else if (book.getCategories().equals(Categories.ACTION)) {
@@ -23,9 +19,7 @@ public class Library implements Actionable {
         }
     }
 
-    @Override
-    public void removeBookList(Books book) {
-        allBooks.remove(book.getId(), book);
+    public void deletedInCategory(Books book) {
         if (book.getCategories().equals(Categories.SCIENCE_FICTION)) {
             scienceCategory.remove(book);
         } else if (book.getCategories().equals(Categories.ACTION)) {
@@ -36,19 +30,25 @@ public class Library implements Actionable {
     }
 
     @Override
+    public void addBookList(Books book) {
+        allBooks.put(book.getId(), book);
+        distributeCategory(book);
+    }
+
+    @Override
+    public void removeBookList(Books book) {
+        allBooks.remove(book.getId(), book);
+        deletedInCategory(book);
+    }
+
+    @Override
     public void addUserList(Books book) {
         if (usersBooks.size() >= 5) {
             System.out.println("You can take max 5 books.");
         } else {
             allBooks.remove(book.getId(), book);
             usersBooks.add(book);
-            if (book.getCategories().equals(Categories.SCIENCE_FICTION)) {
-                scienceCategory.remove(book);
-            } else if (book.getCategories().equals(Categories.ACTION)) {
-                actionCategory.remove(book);
-            } else {
-                adventureCategory.remove(book);
-            }
+            deletedInCategory(book);
         }
     }
 
@@ -56,13 +56,7 @@ public class Library implements Actionable {
     public void removeUserList(Books book) {
         allBooks.put(book.getId(), book);
         usersBooks.remove(book);
-        if (book.getCategories().equals(Categories.SCIENCE_FICTION)) {
-            scienceCategory.add(book);
-        } else if (book.getCategories().equals(Categories.ACTION)) {
-            actionCategory.add(book);
-        } else {
-            adventureCategory.add(book);
-        }
+        distributeCategory(book);
     }
 
     public void listAllBooks() {
