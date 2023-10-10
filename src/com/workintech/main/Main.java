@@ -1,11 +1,10 @@
 package com.workintech.main;
 
 import com.workintech.enums.Categories;
+import com.workintech.interfaces.Actionable;
 import com.workintech.library.*;
 
-import java.awt.print.Book;
-import java.util.Iterator;
-import java.util.List;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -14,7 +13,6 @@ public class Main {
     }
 
     public static void LibraryOrganisation() {
-        boolean bookInUser = false;
         Books book1 = new Books(1, "Dönüşüm", "Franz Kafka", Categories.SCIENCE_FICTION);
         Books book2 = new Books(2, "Babamı Beklerken", "Clare Vanderpool", Categories.ADVENTURE);
         Books book3 = new Books(3, "Dünyanın ilk günü", "Beyazit Akman", Categories.ADVENTURE);
@@ -58,20 +56,29 @@ public class Main {
 
                     case "u":
                         System.out.println("USER");
-                        System.out.println("Please enter book name: ");
+                        System.out.println("Enter book name for adding : ");
                         String userInput = scanner.next().toLowerCase();
+                        userInput = userInput.replaceAll(" ", "");
                         Users user = new Users();
+                        boolean bookInUser = false;
+
                         for (Books book : library.getAllBooks()) {
-                            if (userInput.equals(book.getName().toLowerCase())) {
-                                System.out.println(book.getName() + "=> This book added to your list.");
+                            String bookInLibrary = book.getName().replaceAll(" ", "").toLowerCase();
+                            if (bookInLibrary.contains(userInput)) {
                                 user.addUserList(book);
+                                System.out.println(book.getName() + " => This book added to your list.");
                                 System.out.println(user);
+                                int bookCounter = Users.usersBooks.size();
+                                System.out.println("For " + bookCounter + " you have to pay " + (bookCounter * 15) + "$");
                                 bookInUser = true;
-                                break;
                             }
                         }
-                        if (!bookInUser) System.out.println(userInput + " isn't in our library.");
+
+                        if (!bookInUser) {
+                            System.out.println(userInput + " isn't in our library.");
+                        }
                         break;
+
 
                     case "l":
                         System.out.println("LIBRARIAN");
@@ -81,22 +88,30 @@ public class Main {
                         switch (librarian) {
                             case "a":
                                 System.out.println("Enter book ID: ");
-                                String bookID = scanner.next();
+                                int bookID = scanner.nextInt();
                                 System.out.println("Enter book name: ");
                                 String bookName = scanner.next();
                                 System.out.println("Enter book author: ");
                                 String bookAuthor = scanner.next();
                                 System.out.println("Enter book category: ");
-                                String bookCategory = scanner.next();
-                                System.out.println("Your book's information: " +
-                                        "Book ID: " + bookID +
-                                        " / Book name:" + bookName +
-                                        " / Book author: " + bookAuthor +
-                                        " / Book category: " + bookCategory);
+                                Categories bookCategory = Categories.valueOf(scanner.next().toUpperCase());
+                                Books addedBook = new Books(bookID, bookName, bookAuthor, bookCategory);
+                                library.addLibraryList(addedBook);
+                                System.out.println("Your book added library: " + addedBook);
+                                System.out.println("Updated Book List: " + library);
                                 break;
 
                             case "d":
-                                System.out.println("You pushed d");
+                                System.out.println("Please enter book name for deleting: ");
+                                String deletedBook = scanner.next();
+                                for (Books book : library.getAllBooks()) {
+                                    if (deletedBook.contains(book.getName().toLowerCase())) {
+                                        System.out.println(book.getName() + "=> This book deleted in library list.");
+                                        library.removeLibraryList(book);
+                                        System.out.println("Updated Book List: " + library);
+                                        break;
+                                    }
+                                }
                                 break;
                         }
                     default:
