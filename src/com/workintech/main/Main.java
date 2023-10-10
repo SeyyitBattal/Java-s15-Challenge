@@ -55,29 +55,54 @@ public class Main {
                         break;
 
                     case "u":
-                        System.out.println("USER");
-                        System.out.println("Enter book name for adding : ");
-                        String userInput = scanner.next().toLowerCase();
-                        userInput = userInput.replaceAll(" ", "");
                         Users user = new Users();
-                        boolean bookInUser = false;
+                        System.out.println("USER");
+                        System.out.println("For borrowing \"B\" giving back \"G\" ");
+                        String userChoosing = scanner.next().toLowerCase();
 
-                        for (Books book : library.getAllBooks()) {
-                            String bookInLibrary = book.getName().replaceAll(" ", "").toLowerCase();
-                            if (bookInLibrary.contains(userInput)) {
-                                user.addUserList(book);
-                                System.out.println(book.getName() + " => This book added to your list.");
-                                System.out.println(user);
-                                int bookCounter = Users.usersBooks.size();
-                                System.out.println("For " + bookCounter + " you have to pay " + (bookCounter * 15) + "$");
-                                bookInUser = true;
-                            }
-                        }
+                        switch (userChoosing) {
+                            case "b":
+                                System.out.println("Enter book name for borrow: ");
+                                String userBorrow = scanner.next().toLowerCase();
+                                userBorrow = userBorrow.replaceAll(" ", "");
+                                boolean isBookInUser = false;
 
-                        if (!bookInUser) {
-                            System.out.println(userInput + " isn't in our library.");
+                                for (Books book : library.getAllBooks()) {
+                                    String bookInLibrary = book.getName().replaceAll(" ", "").toLowerCase();
+                                    if (bookInLibrary.contains(userBorrow)) {
+                                        user.addUserList(book);
+                                        System.out.println(book.getName() + " => This book added to your list.");
+                                        System.out.println(user);
+                                        int bookCounter = Users.usersBooks.size();
+                                        System.out.println("For " + bookCounter + "book you have to pay " + (bookCounter * 15) + "$");
+                                        isBookInUser = true;
+                                    }
+                                }
+
+                                if (!isBookInUser) System.out.println(userBorrow + " isn't in our library.");
+                                break;
+
+
+                            case "g":
+                                System.out.println("Enter book name for give it back: ");
+                                String userGiveBack = scanner.next().toLowerCase();
+                                userGiveBack = userGiveBack.replaceAll(" ", "");
+                                boolean isBookLibrary = false;
+                                for (Books book : Users.usersBooks) {
+                                    String bookInUser = book.getName().replaceAll(" ", "").toLowerCase();
+                                    if (bookInUser.contains(userGiveBack)) {
+                                        user.removeUserList(book);
+                                        System.out.println(book.getName() + " => This book deleted in your list.");
+                                        System.out.println(user);
+                                        int bookCounter = Users.usersBooks.size();
+                                        System.out.println("For " + bookCounter + " book you have to pay " + (bookCounter * 15) + "$");
+                                        isBookLibrary = true;
+                                    }
+                                }
+                                if (!isBookLibrary) System.out.println(userGiveBack + " isn't in your list.");
+                                break;
+
                         }
-                        break;
 
 
                     case "l":
