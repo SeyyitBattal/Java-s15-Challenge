@@ -12,7 +12,7 @@ public class Main {
         LibraryOrganisation();
     }
 
-    public static void LibraryOrganisation() {
+    private static void LibraryOrganisation() {
         Books book1 = new Books(1, "Dönüşüm", "Franz Kafka", Categories.SCIENCE_FICTION);
         Books book2 = new Books(2, "Babamı Beklerken", "Clare Vanderpool", Categories.ADVENTURE);
         Books book3 = new Books(3, "Dünyanın ilk günü", "Beyazit Akman", Categories.ADVENTURE);
@@ -74,7 +74,7 @@ public class Main {
                                         System.out.println(book.getName() + " => This book added to your list.");
                                         System.out.println(user);
                                         int bookCounter = Users.usersBooks.size();
-                                        System.out.println("For " + bookCounter + "book you have to pay " + (bookCounter * 15) + "$");
+                                        System.out.println("For " + bookCounter + " book you have to pay " + (bookCounter * 15) + "$");
                                         isBookInUser = true;
                                     }
                                 }
